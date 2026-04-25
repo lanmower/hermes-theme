@@ -114,6 +114,13 @@ customCSS: |
   /* ── Kill noise / filler overlays ── */
   body::before, body::after { display: none !important; }
   [class*="noise"], [class*="grain"] { display: none !important; opacity: 0 !important; }
+  /* The dashboard renders a fixed inset-0 z-[2] decorative overlay (3D/canvas bg).
+     On a flat Gmail surface it shows through as dark grey bars over scroll regions —
+     hide it entirely. */
+  .pointer-events-none.fixed.inset-0,
+  div[class*="pointer-events-none"][class*="fixed"][class*="inset-0"] {
+    display: none !important;
+  }
 
   /* ── Root app reset (hardcoded bg-black / uppercase / font-mondwest) ── */
   .bg-black, [class~="bg-black"] { background-color: #f6f8fc !important; }
@@ -204,9 +211,9 @@ customCSS: |
     color: var(--cl-text-1) !important;
     opacity: 1 !important;
   }
-  /* Logo text */
-  aside > div:first-child span,
-  aside > div:first-child a {
+  /* Logo text — direct child only, scoped to primary nav aside */
+  aside.fixed > div:first-child > span,
+  aside.fixed > div:first-child > a {
     font-size: 1.375rem !important;
     font-weight: 400 !important;
     letter-spacing: -0.01em !important;
@@ -240,13 +247,24 @@ customCSS: |
   }
   aside a[href]:hover, aside nav a:hover { background: var(--cl-hover) !important; }
 
-  /* Active / current route */
+  /* Active / current route — Gmail uses red for selected nav */
   aside a[aria-current="page"], aside a.active {
     background: var(--cl-red-light) !important;
     color: var(--cl-red) !important;
-    font-weight: 700 !important;
+    font-weight: 500 !important;
   }
   aside a[aria-current="page"] svg, aside a.active svg { color: var(--cl-red) !important; }
+  /* But secondary nav (config category aside.sm:w-56) buttons must NOT inherit red */
+  aside.sm\:w-56 svg, aside[class*="sm:w-56"] svg,
+  aside.sm\:w-56 button svg, aside[class*="sm:w-56"] button svg {
+    color: var(--cl-text-2) !important;
+    width: 16px !important;
+    height: 16px !important;
+  }
+  aside.sm\:w-56 button[class*="bg-foreground"] svg,
+  aside[class*="sm:w-56"] button[class*="bg-foreground"] svg {
+    color: var(--cl-blue) !important;
+  }
 
   /* Nav icons */
   aside a svg, aside nav svg {

@@ -115,6 +115,11 @@ customCSS: |
   /* ── Kill noise / filler overlays ── */
   body::before, body::after { display: none !important; }
   [class*="noise"], [class*="grain"] { display: none !important; opacity: 0 !important; }
+  /* Hide the dashboard's fixed inset-0 z-[2] decorative overlay (3D/canvas bg) */
+  .pointer-events-none.fixed.inset-0,
+  div[class*="pointer-events-none"][class*="fixed"][class*="inset-0"] {
+    display: none !important;
+  }
 
   /* ── Root app reset ── */
   .bg-black, [class~="bg-black"] { background-color: #1f1f1f !important; }
