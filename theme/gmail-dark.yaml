@@ -137,11 +137,33 @@ customCSS: |
   }
 
   /* ── Base ── */
-  html, body { background: #1f1f1f !important; color: #e8eaed !important; }
-  #root, #root > div, #root > div > div { background: #1f1f1f !important; }
+  html, body {
+    background: #1f1f1f !important;
+    background-color: #1f1f1f !important;
+    color: #e8eaed !important;
+    min-height: 100vh !important;
+    overscroll-behavior: none !important;
+  }
+  #root, #root > div, #root > div > div, #root > div > div > div {
+    background: #1f1f1f !important;
+    min-height: 100vh !important;
+  }
   .flex.min-h-0.min-w-0.flex-1,
   [class*="flex min-h-0 w-full"],
   [class*="flex min-h-0 min-w-0"] { background: #1f1f1f !important; }
+  /* Every scroll container paints its own bg so overscroll/elastic bounce
+     never reveals a darker layer. */
+  [class*="overflow-y-auto"],
+  [class*="overflow-auto"],
+  [class*="overflow-y-scroll"],
+  [class*="overflow-scroll"],
+  [style*="overflow-y: auto"],
+  [style*="overflow-y:auto"],
+  [style*="overflow: auto"],
+  [style*="overflow:auto"] {
+    background-color: #1f1f1f !important;
+    overscroll-behavior: contain !important;
+  }
 
   /* ══════════════════════════════════════════
      SIDEBAR
@@ -260,7 +282,7 @@ customCSS: |
     padding: 10px 20px !important; height: 48px !important; color: #e8eaed !important;
   }
   input[type="search"]:focus, input[placeholder*="Search"]:focus {
-    background: #2d2e30 !important; box-shadow: 0 1px 3px rgba(0,0,0,0.4) !important; outline: none !important;
+    background: #2d2e30 !important; box-shadow: none !important; outline: 1px solid rgba(255,255,255,0.16) !important;
   }
   input[type="text"], input[type="email"], input[type="password"],
   input[type="number"], input[type="url"], textarea, select {
@@ -328,7 +350,8 @@ customCSS: |
   [data-slot="select-content"], [role="listbox"], [role="menu"], [role="dialog"] > div {
     background: #2d2e30 !important; border: none !important;
     border-radius: 0.5rem !important;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08) !important;
+    box-shadow: none !important;
+    outline: 1px solid rgba(255,255,255,0.08) !important;
   }
   [role="option"], [role="menuitem"] {
     padding: 8px 16px !important; color: #e8eaed !important;

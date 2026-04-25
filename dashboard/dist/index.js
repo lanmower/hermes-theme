@@ -136,24 +136,33 @@
   }
 
   // ─── Session rows (/sessions page) ────────────────────────────────────────
-  // Two variants:
-  //   1. Compact list: div.flex.flex-col.sm:flex-row.sm:items-center  (has font-mono-ui model)
-  //   2. Accordion:    div.border.overflow-hidden.transition-colors    (has font-mono model)
+  // Principle: backgrounds, not borders. Each row gets a tinted bg + colored
+  // title so the entity is identifiable without any border chrome.
+  function paintRow(row, name, bgAlpha) {
+    const [bg, fg] = colorsFor(name);
+    row.style.backgroundColor = bg + bgAlpha;
+    row.style.borderLeft = "none";
+    // Title heading
+    const titleEl = row.querySelector("span.font-medium, span.font-semibold");
+    if (titleEl && !titleEl.dataset.clTitle) {
+      titleEl.dataset.clTitle = "1";
+      titleEl.style.color = fg;
+      titleEl.style.fontWeight = "600";
+    }
+  }
+
   function colorSessions() {
-    // Compact rows — require a model badge to confirm it's a session row
+    // Compact rows
     document.querySelectorAll("div.flex.flex-col.sm\\:flex-row.sm\\:items-center").forEach((row) => {
       const titleEl = row.querySelector("span.font-medium");
       const modelEl = row.querySelector("span.font-mono-ui, span[class*='font-mono']");
       if (!titleEl || !modelEl) return;
       const name = titleEl.textContent.trim() || "Untitled";
       if (!mark(row, name)) return;
-      const [bg, fg] = colorsFor(name);
-      row.style.borderLeft = `4px solid ${fg}`;
-      row.style.paddingLeft = "calc(0.75rem - 4px)";
-      row.style.backgroundColor = bg + "55";
+      paintRow(row, name, "33");
     });
 
-    // Accordion rows — require model text
+    // Accordion rows
     document.querySelectorAll("div.border.overflow-hidden.transition-colors.border-border").forEach((row) => {
       const modelEl = row.querySelector("span.font-mono-ui, span[class*='font-mono']");
       if (!modelEl) return;
@@ -161,8 +170,7 @@
       if (!titleEl) return;
       const name = titleEl.textContent.trim() || "Untitled";
       if (!mark(row, name)) return;
-      const fg = accent(name);
-      row.style.borderLeft = `4px solid ${fg}`;
+      paintRow(row, name, "26");
     });
   }
 
@@ -179,9 +187,7 @@
       const name = nameEl.textContent.trim();
       if (!name) return;
       if (!mark(row, name)) return;
-      const [bg, fg] = colorsFor(name);
-      row.style.borderLeft = `3px solid ${fg}`;
-      row.style.backgroundColor = bg + "44";
+      paintRow(row, name, "44");
     });
   }
 
@@ -202,9 +208,7 @@
       const name = nameEl.textContent.trim();
       if (!name || name === "New Cron Job") return; // skip create form
       if (!mark(card, name)) return;
-      const [bg, fg] = colorsFor(name);
-      card.style.borderLeft = `4px solid ${fg}`;
-      card.style.backgroundColor = bg + "55";
+      paintRow(card, name, "55");
     });
   }
 
@@ -306,6 +310,11 @@
         el.style.removeProperty("border-left");
         el.style.removeProperty("background-color");
         el.style.removeProperty("color");
+        el.querySelectorAll("[data-cl-title]").forEach(t => {
+          delete t.dataset.clTitle;
+          t.style.removeProperty("color");
+          t.style.removeProperty("font-weight");
+        });
       });
       scan();
     },
@@ -319,6 +328,11 @@
         el.style.removeProperty("border-left");
         el.style.removeProperty("background-color");
         el.style.removeProperty("color");
+        el.querySelectorAll("[data-cl-title]").forEach(t => {
+          delete t.dataset.clTitle;
+          t.style.removeProperty("color");
+          t.style.removeProperty("font-weight");
+        });
       });
       scan();
     },
@@ -332,6 +346,11 @@
         el.style.removeProperty("border-left");
         el.style.removeProperty("background-color");
         el.style.removeProperty("color");
+      });
+      document.querySelectorAll("[data-cl-title]").forEach(t => {
+        delete t.dataset.clTitle;
+        t.style.removeProperty("color");
+        t.style.removeProperty("font-weight");
       });
       scan();
     },
