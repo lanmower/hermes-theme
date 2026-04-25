@@ -346,6 +346,32 @@
       color: var(--cl-red) !important;
     }
 
+    /* Form inputs (text / textarea / select) — Material filled style with
+       visible bg distinct from card surface, so the field is identifiable. */
+    main input:not([type="search"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+    main textarea, main select {
+      background: var(--cl-input-bg) !important;
+      color: var(--cl-text-1) !important;
+      border-radius: 4px 4px 0 0 !important;
+      padding: 12px 12px 10px !important;
+      border-bottom: 2px solid transparent !important;
+      transition: background 0.15s, border-color 0.15s !important;
+    }
+    main input:not([type="search"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]):hover,
+    main textarea:hover, main select:hover {
+      background: var(--cl-input-hover) !important;
+    }
+    main input:not([type="search"]):not([type="checkbox"]):not([type="radio"]):not([type="range"]):focus,
+    main textarea:focus, main select:focus {
+      background: var(--cl-input-hover) !important;
+      border-bottom-color: var(--cl-blue) !important;
+      outline: none !important;
+    }
+    main input::placeholder, main textarea::placeholder {
+      color: var(--cl-text-3) !important;
+      opacity: 1 !important;
+    }
+
     /* Search input: clear leading-icon overlap, big pill */
     input[type="search"], input[placeholder*="Search"], input[placeholder*="search"] {
       padding-left: 56px !important;
@@ -547,15 +573,69 @@
     }
     table td { padding: 12px 16px !important; font-size: 0.875rem !important; }
 
-    /* Sidebar footer block */
-    aside > div:last-child, aside [class*="border-t"]:last-child {
+    /* Sidebar footer block — System / Gateway / Restart / Update / Theme / Lang */
+    aside > div[class*="shrink-0"][class*="flex-col"] {
       background: var(--cl-bg) !important;
-      padding: 8px 12px !important;
+      padding: 8px 0 !important;
     }
-    aside > div:last-child * {
+    /* Section label (System) — small uppercase muted but legible */
+    aside > div[class*="shrink-0"] > span[class*="opacity"] {
+      opacity: 1 !important;
+      color: var(--cl-text-3) !important;
+      font-size: 0.6875rem !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      font-weight: 500 !important;
+      padding: 4px 16px !important;
+    }
+    /* Gateway Status / Active Sessions row */
+    aside > div[class*="shrink-0"] a[title="Status overview"] {
+      color: var(--cl-text-2) !important;
+      padding: 4px 16px 8px !important;
+    }
+    aside > div[class*="shrink-0"] a[title="Status overview"] * {
+      color: var(--cl-text-2) !important;
+      opacity: 1 !important;
       font-size: 0.75rem !important;
-      text-transform: none !important;
       letter-spacing: 0 !important;
+      text-transform: none !important;
+      line-height: 1.4 !important;
+    }
+    aside > div[class*="shrink-0"] a[title="Status overview"] span.text-muted-foreground\\/50,
+    aside > div[class*="shrink-0"] a[title="Status overview"] span[class*="text-muted-foreground/50"] {
+      color: var(--cl-text-3) !important;
+    }
+    /* Action pill rows (Restart Gateway / Update Thoth / Theme / Lang) */
+    aside > div[class*="shrink-0"] button {
+      background: transparent !important;
+      color: var(--cl-text-1) !important;
+      font-size: 0.75rem !important;
+      letter-spacing: 0 !important;
+      text-transform: none !important;
+      font-weight: 500 !important;
+      padding: 6px 12px !important;
+      border-radius: 9999px !important;
+      transition: background 0.12s !important;
+      opacity: 1 !important;
+    }
+    aside > div[class*="shrink-0"] button:hover { background: var(--cl-hover) !important; }
+    aside > div[class*="shrink-0"] button svg {
+      color: var(--cl-text-2) !important;
+      width: 14px !important;
+      height: 14px !important;
+    }
+    /* Final row (Clean Dark / GB EN / version) — sit on the bottom */
+    aside > div[class*="border-t"]:last-child {
+      background: var(--cl-bg) !important;
+      color: var(--cl-text-3) !important;
+      padding: 8px 16px !important;
+      font-size: 0.6875rem !important;
+    }
+    aside > div[class*="border-t"]:last-child * {
+      color: var(--cl-text-3) !important;
+      opacity: 1 !important;
+      letter-spacing: 0 !important;
+      text-transform: none !important;
     }
 
     /* Log lines — theme-aware via custom properties so dark mode picks
