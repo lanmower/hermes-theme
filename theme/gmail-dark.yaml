@@ -1,0 +1,364 @@
+# Clean Dark — Hermes dashboard theme
+# Gmail dark mode: dark surfaces, same accent palette, same structure.
+name: gmail-dark
+label: "Clean Dark"
+description: "Gmail-inspired dark: deep surfaces, red/blue accents, Roboto"
+
+# ------- palette -------
+palette:
+  background: "#1f1f1f"
+  midground: "#e8eaed"
+  foreground:
+    hex: "#2d2e30"
+    alpha: 0
+  warmGlow: "rgba(0,0,0,0)"
+  noiseOpacity: 0
+
+# ------- typography -------
+typography:
+  fontSans: '"Google Sans", "Roboto", system-ui, sans-serif'
+  fontMono: '"Roboto Mono", ui-monospace, monospace'
+  fontDisplay: '"Google Sans", "Roboto", system-ui, sans-serif'
+  fontUrl: "https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap"
+  baseSize: "14px"
+  lineHeight: "1.5"
+  letterSpacing: "0"
+
+# ------- layout -------
+layout:
+  radius: "0.5rem"
+  density: "comfortable"
+
+layoutVariant: standard
+
+# ------- assets -------
+assets:
+  bg: "#1f1f1f"
+
+# ------- component chrome -------
+componentStyles:
+  card:
+    background: "#2d2e30"
+    boxShadow: "none"
+    border: "none"
+    borderRadius: "0"
+  header:
+    background: "#1f1f1f"
+    boxShadow: "none"
+    borderBottom: "none"
+  sidebar:
+    background: "#1f1f1f"
+    borderRight: "none"
+  tab:
+    borderRadius: "0"
+  backdrop:
+    fillerOpacity: "0"
+  badge:
+    borderRadius: "9999px"
+    fontWeight: "500"
+
+# ------- color overrides -------
+colorOverrides:
+  primary: "#f28b82"
+  primaryForeground: "#1f1f1f"
+  secondary: "#3c4043"
+  secondaryForeground: "#e8eaed"
+  accent: "#8ab4f8"
+  accentForeground: "#1f1f1f"
+  muted: "#35363a"
+  mutedForeground: "#9aa0a6"
+  border: "#3c4043"
+  input: "#2d2e30"
+  ring: "#8ab4f8"
+  card: "#2d2e30"
+  cardForeground: "#e8eaed"
+  destructive: "#f28b82"
+  destructiveForeground: "#1f1f1f"
+  success: "#81c995"
+  warning: "#fdd663"
+
+# ------- customCSS -------
+customCSS: |
+  /* ═══════════════════════════════════════════════════════
+     CLEAN DARK — Gmail dark mode aesthetic
+     ═══════════════════════════════════════════════════════ */
+
+  /* ── Dark mode tokens ── */
+  :root {
+    --cl-bg: #1f1f1f !important;
+    --cl-surface: #2d2e30 !important;
+    --cl-surface-2: #35363a !important;
+    --cl-hover: #3c4043 !important;
+    --cl-selected: #1d3461 !important;
+    --cl-divider: rgba(255,255,255,0.08) !important;
+    --cl-divider-strong: rgba(255,255,255,0.16) !important;
+    --cl-text-1: #e8eaed !important;
+    --cl-text-2: #9aa0a6 !important;
+    --cl-text-3: #5f6368 !important;
+    --cl-red: #f28b82 !important;
+    --cl-red-light: #4c1c1a !important;
+    --cl-red-hover: #5c2220 !important;
+    --cl-blue: #8ab4f8 !important;
+    --cl-blue-light: #1a2d52 !important;
+    --cl-green: #81c995 !important;
+    --cl-yellow: #fdd663 !important;
+    --cl-nav-width: 256px;
+    --cl-nav-item-radius: 0 20px 20px 0;
+    --cl-row-bg: #2d2e30 !important;
+    --cl-shadow: none;
+  }
+
+  /* ── Force color-scheme dark ── */
+  :root { color-scheme: dark !important; }
+  html, body { color-scheme: dark !important; }
+
+  /* ── Kill noise / filler overlays ── */
+  body::before, body::after { display: none !important; }
+  [class*="noise"], [class*="grain"] { display: none !important; opacity: 0 !important; }
+
+  /* ── Root app reset ── */
+  .bg-black, [class~="bg-black"] { background-color: #1f1f1f !important; }
+  .uppercase, [class~="uppercase"] { text-transform: none !important; }
+  .font-mondwest, [class~="font-mondwest"] {
+    font-family: "Google Sans", Roboto, system-ui, sans-serif !important;
+    letter-spacing: 0 !important;
+  }
+  [class*="tracking-["] { letter-spacing: 0 !important; }
+  .text-midground { color: var(--cl-text-1) !important; mix-blend-mode: normal !important; }
+
+  /* ── ALL fonts → Google Sans / Roboto ── */
+  *, *::before, *::after {
+    font-family: "Google Sans", Roboto, system-ui, -apple-system, sans-serif !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+  }
+  code, pre, kbd, samp, [class*="font-mono"], .font-mono-ui, [class*="mono"] {
+    font-family: "Roboto Mono", ui-monospace, monospace !important;
+  }
+
+  /* ── Base ── */
+  html, body { background: #1f1f1f !important; color: #e8eaed !important; }
+  #root, #root > div, #root > div > div { background: #1f1f1f !important; }
+  .flex.min-h-0.min-w-0.flex-1,
+  [class*="flex min-h-0 w-full"],
+  [class*="flex min-h-0 min-w-0"] { background: #1f1f1f !important; }
+
+  /* ══════════════════════════════════════════
+     SIDEBAR
+     ══════════════════════════════════════════ */
+  aside {
+    background: #1f1f1f !important;
+    border-right: none !important;
+    width: var(--cl-nav-width) !important;
+    padding: 0 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  aside > div:first-child {
+    background: #1f1f1f !important;
+    border-bottom: none !important;
+    padding: 0 16px !important; height: 64px !important; align-items: center !important;
+  }
+  aside span[style*="mix-blend-mode"], [class*="blend-lighter"] {
+    mix-blend-mode: normal !important; color: #e8eaed !important; opacity: 1 !important;
+  }
+  aside > div:first-child span, aside > div:first-child a {
+    font-size: 1.375rem !important; font-weight: 400 !important;
+    color: #e8eaed !important; mix-blend-mode: normal !important;
+  }
+  aside nav, aside > div > nav { padding: 8px 0 !important; }
+  aside a[href], aside nav a, aside nav button:not([aria-label]) {
+    display: flex !important; align-items: center !important; gap: 16px !important;
+    height: 40px !important; padding: 0 16px !important; margin: 0 8px 0 0 !important;
+    border-radius: var(--cl-nav-item-radius) !important;
+    font-size: 0.875rem !important; font-weight: 500 !important;
+    color: #e8eaed !important; background: transparent !important;
+    transition: background 0.1s ease !important; border: none !important;
+  }
+  aside a[href]:hover, aside nav a:hover { background: #3c4043 !important; }
+  aside a[aria-current="page"], aside a.active {
+    background: #4c1c1a !important; color: #f28b82 !important; font-weight: 700 !important;
+  }
+  aside a[aria-current="page"] svg, aside a.active svg { color: #f28b82 !important; }
+  aside a svg, aside nav svg { width: 20px !important; height: 20px !important; flex-shrink: 0 !important; }
+  aside .text-muted-foreground, aside [class*="text-muted"] {
+    font-size: 0.75rem !important; color: #5f6368 !important; padding: 4px 16px !important;
+  }
+  aside [class*="border-t"], aside > div:last-child {
+    border-top: 1px solid rgba(255,255,255,0.08) !important;
+    padding: 8px 16px !important; color: #5f6368 !important;
+  }
+
+  /* ══════════════════════════════════════════
+     HEADER
+     ══════════════════════════════════════════ */
+  header, [class*="h-14"][class*="border-b"], [class*="h-12"][class*="border-b"],
+  [class*="sticky"][class*="top-0"][class*="border"] {
+    background: #1f1f1f !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    box-shadow: none !important; backdrop-filter: none !important;
+  }
+  [class*="backdrop-blur"] {
+    backdrop-filter: none !important; background: #1f1f1f !important;
+  }
+  [class*="h-14"] h1, [class*="h-14"] h2, header h1, header h2 {
+    font-size: 1.375rem !important; font-weight: 400 !important; color: #e8eaed !important;
+  }
+
+  /* ══════════════════════════════════════════
+     MAIN + CARDS
+     ══════════════════════════════════════════ */
+  main { background: #1f1f1f !important; padding: 0 !important; color: #e8eaed !important; }
+  main > div { background: transparent !important; }
+  .border.border-border, [class*="border border-border"],
+  [class*="border-border bg-card"], [class*="rounded"][class*="border"][class*="bg-card"] {
+    background: #2d2e30 !important; border: none !important;
+    border-radius: 0 !important; box-shadow: none !important; color: #e8eaed !important;
+  }
+  [class*="border-border"] > [class*="border-b"] {
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    background: #35363a !important;
+  }
+  [class*="border-border"] h3, [class*="border-border"] h2 {
+    font-size: 0.875rem !important; font-weight: 500 !important; color: #9aa0a6 !important;
+  }
+  /* Row items */
+  .border.border-border [class*="border border-border p-"],
+  [class*="border-border"] [class*="border border-border"],
+  [class*="flex flex-col"][class*="border border-border p-3"] {
+    background: #2d2e30 !important; border: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 0 !important; box-shadow: none !important;
+  }
+  .border.border-border [class*="border border-border p-"]:hover,
+  [class*="border-border"] [class*="border border-border"]:hover,
+  [class*="flex flex-col"][class*="border border-border p-3"]:hover {
+    background: #3c4043 !important;
+  }
+  .flex.flex-col.gap-4 { gap: 0 !important; }
+  .grid.gap-3 { gap: 0 !important; }
+  [class*="border-b border-border"], [class*="border-b border-current"] {
+    border-color: rgba(255,255,255,0.08) !important; background: #2d2e30 !important;
+  }
+  [class*="border-b border-border"]:hover, [class*="border-b border-current"]:hover {
+    background: #3c4043 !important;
+  }
+
+  /* Tables */
+  tr { border-bottom: 1px solid rgba(255,255,255,0.08) !important; background: #2d2e30 !important; }
+  tr:hover { background: #3c4043 !important; }
+  thead tr { background: #35363a !important; }
+  th { font-weight: 500 !important; color: #9aa0a6 !important; font-size: 0.8125rem !important; }
+  td { font-size: 0.875rem !important; color: #e8eaed !important; }
+  table { background: #2d2e30 !important; }
+
+  /* ══════════════════════════════════════════
+     INPUTS
+     ══════════════════════════════════════════ */
+  input[type="search"], input[placeholder*="Search"], input[placeholder*="search"] {
+    background: #35363a !important; border: none !important; border-radius: 9999px !important;
+    padding: 10px 20px !important; height: 48px !important; color: #e8eaed !important;
+  }
+  input[type="search"]:focus, input[placeholder*="Search"]:focus {
+    background: #2d2e30 !important; box-shadow: 0 1px 3px rgba(0,0,0,0.4) !important; outline: none !important;
+  }
+  input[type="text"], input[type="email"], input[type="password"],
+  input[type="number"], input[type="url"], textarea, select {
+    background: #2d2e30 !important; border: 1px solid rgba(255,255,255,0.16) !important;
+    border-radius: 0.25rem !important; color: #e8eaed !important;
+  }
+  input[type="text"]:focus, textarea:focus, select:focus {
+    border-color: #8ab4f8 !important; outline: none !important;
+  }
+
+  /* ══════════════════════════════════════════
+     BUTTONS
+     ══════════════════════════════════════════ */
+  button[data-variant="default"], [class*="bg-primary"]:not(aside):not(nav) {
+    background: #8ab4f8 !important; color: #1f1f1f !important; border: none !important;
+    border-radius: 0.25rem !important; font-weight: 500 !important;
+  }
+  button[data-variant="outline"], button[data-variant="ghost"] {
+    background: transparent !important; border: 1px solid rgba(255,255,255,0.16) !important;
+    color: #8ab4f8 !important; border-radius: 0.25rem !important;
+  }
+  button[data-variant="ghost"] { border-color: transparent !important; color: #e8eaed !important; }
+  button[data-variant="outline"]:hover, button[data-variant="ghost"]:hover { background: #3c4043 !important; }
+  button[data-variant="destructive"] { background: #f28b82 !important; color: #1f1f1f !important; }
+  button[class*="rounded-full"], button[class*="size-8"] {
+    border-radius: 50% !important; background: transparent !important; border: none !important;
+  }
+  button[class*="rounded-full"]:hover, button[class*="size-8"]:hover { background: #3c4043 !important; }
+
+  /* ══════════════════════════════════════════
+     TABS
+     ══════════════════════════════════════════ */
+  [role="tablist"] {
+    background: #2d2e30 !important; border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    gap: 0 !important; padding: 0 !important;
+  }
+  [role="tab"] {
+    border-radius: 0 !important; color: #9aa0a6 !important; font-size: 0.875rem !important;
+    font-weight: 500 !important; padding: 14px 20px !important;
+    border-bottom: 3px solid transparent !important; background: transparent !important;
+  }
+  [role="tab"]:hover { color: #e8eaed !important; background: #3c4043 !important; }
+  [role="tab"][aria-selected="true"], [role="tab"][data-state="active"] {
+    color: #8ab4f8 !important; border-bottom-color: #8ab4f8 !important; font-weight: 700 !important;
+  }
+
+  /* ══════════════════════════════════════════
+     BADGES / CHIPS
+     ══════════════════════════════════════════ */
+  [data-slot="badge"], [class*="rounded-full"][class*="px-"],
+  .inline-flex.items-center.border[class*="px-"][class*="py-"] {
+    border-radius: 9999px !important; font-size: 0.6875rem !important;
+    font-weight: 500 !important; padding: 2px 8px !important; border: none !important;
+    background: #35363a !important; color: #9aa0a6 !important;
+  }
+  .inline-flex.items-center.border[class*="tracking-"] {
+    background: #35363a !important; color: #9aa0a6 !important;
+    border: 1px solid rgba(255,255,255,0.1) !important; border-radius: 9999px !important;
+  }
+
+  /* ══════════════════════════════════════════
+     DROPDOWNS / DIALOGS
+     ══════════════════════════════════════════ */
+  [data-slot="popover-content"], [data-slot="dropdown-content"],
+  [data-slot="select-content"], [role="listbox"], [role="menu"], [role="dialog"] > div {
+    background: #2d2e30 !important; border: none !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.08) !important;
+  }
+  [role="option"], [role="menuitem"] {
+    padding: 8px 16px !important; color: #e8eaed !important;
+  }
+  [role="option"]:hover, [role="menuitem"]:hover { background: #3c4043 !important; }
+
+  /* ══════════════════════════════════════════
+     FOOTER / SEPARATOR / MISC
+     ══════════════════════════════════════════ */
+  footer, [data-slot="footer"], [class*="border-t p-"], [class*="border-t px-"] {
+    background: #1f1f1f !important;
+    border-top: 1px solid rgba(255,255,255,0.08) !important;
+    color: #5f6368 !important;
+  }
+  [data-slot="separator"], hr {
+    background-color: rgba(255,255,255,0.08) !important; height: 1px !important;
+  }
+  [role="tooltip"], [data-slot="tooltip-content"] {
+    background: #3c4043 !important; color: #e8eaed !important;
+    border-radius: 0.25rem !important; font-size: 0.75rem !important;
+  }
+  * { scrollbar-width: thin; scrollbar-color: #5f6368 transparent; }
+  *::-webkit-scrollbar { width: 6px; height: 6px; }
+  *::-webkit-scrollbar-thumb { background: #5f6368; border-radius: 3px; }
+  * { box-shadow: none !important; }
+
+  /* ══════════════════════════════════════════
+     COMPARTMENT COLOURS
+     ══════════════════════════════════════════ */
+  [data-compartment] [data-slot="badge"], [data-compartment] .badge {
+    background: var(--cl-compartment-bg, #1a2d52) !important;
+    color: var(--cl-compartment-fg, #8ab4f8) !important;
+  }

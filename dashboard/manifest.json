@@ -1,0 +1,13 @@
+{
+  "name": "gmail-skin",
+  "label": "Clean Light Skin",
+  "description": "Compartment label colours for the Clean Light theme",
+  "icon": "Palette",
+  "version": "1.0.0",
+  "tab": {
+    "path": "/gmail-skin",
+    "position": "end",
+    "hidden": true
+  },
+  "entry": "dist/index.js"
+}
