@@ -384,3 +384,64 @@ customCSS: |
   [data-compartment] [data-slot="badge"], [data-compartment] .badge {
     background: var(--cl-compartment-bg, #1a2d52) !important;
   }
+
+  /* ══════════════════════════════════════════
+     CATEGORY / FILTER PILLS
+     ══════════════════════════════════════════ */
+  button[class*="rounded-full"][class*="border"],
+  [class*="sm:w-56"] button, [class*="sm:sticky"] button {
+    border: 1px solid rgba(255,255,255,0.08) !important;
+    border-radius: 9999px !important;
+    background: #2d2e30 !important;
+    color: #9aa0a6 !important;
+    font-size: 0.75rem !important;
+    line-height: 1.2 !important;
+    font-weight: 500 !important;
+    padding: 4px 10px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    box-shadow: none !important;
+    letter-spacing: 0 !important;
+  }
+  button[class*="rounded-full"][class*="border"][aria-pressed="true"],
+  [class*="sm:w-56"] button[aria-pressed="true"],
+  [class*="sm:sticky"] button[aria-pressed="true"] {
+    background: #8ab4f8 !important;
+    color: #1f1f1f !important;
+    border-color: #8ab4f8 !important;
+  }
+  [class*="sm:w-56"], [class*="sm:w-56"] *,
+  [class*="sm:sticky"], [class*="sm:sticky"] * {
+    font-size: 0.8125rem !important;
+  }
+  [class*="sm:w-56"] h2, [class*="sm:w-56"] h3, [class*="sm:w-56"] h4,
+  [class*="sm:sticky"] h2, [class*="sm:sticky"] h3, [class*="sm:sticky"] h4 {
+    font-size: 0.6875rem !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: #5f6368 !important;
+  }
+
+  /* ══════════════════════════════════════════
+     LOGO CORNER + FULL FILL
+     ══════════════════════════════════════════ */
+  aside > div:first-child, aside > a:first-child,
+  aside header, aside [class*="h-14"]:first-child, aside [class*="h-16"]:first-child {
+    background: #1f1f1f !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    height: 64px !important; min-height: 64px !important;
+    display: flex !important; align-items: center !important;
+    padding: 0 16px !important; gap: 12px !important;
+  }
+  aside > div:first-child svg, aside > a:first-child svg {
+    width: 28px !important; height: 28px !important; color: #f28b82 !important;
+  }
+  html { background: #1f1f1f !important; }
+  body { background: #1f1f1f !important; min-height: 100vh !important; }
+  body > #root, #root > * { min-height: 100vh !important; background: #1f1f1f !important; }
+  main, main > * { background: #1f1f1f !important; }
+  [class*="fixed"][class*="top-0"], [class*="sticky"][class*="top-0"] {
+    background: #1f1f1f !important;
+  }

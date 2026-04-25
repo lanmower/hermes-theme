@@ -722,23 +722,90 @@ customCSS: |
   /* Sticky filter panels (skills page, config page sidebar) */
   .sm\:sticky { background: #f6f8fc !important; }
 
-  /* Category pills in skills */
-  button[class*="rounded-full"][class*="border"] {
+  /* Category / filter pills (skills, config) — Gmail chip size */
+  button[class*="rounded-full"][class*="border"],
+  aside button, aside a[role="button"],
+  [class*="sm:w-56"] button, [class*="sm:sticky"] button {
     border: 1px solid var(--cl-divider) !important;
     border-radius: 9999px !important;
     background: #f6f8fc !important;
     color: var(--cl-text-2) !important;
     font-size: 0.75rem !important;
+    line-height: 1.2 !important;
     font-weight: 500 !important;
-    padding: 4px 12px !important;
+    padding: 4px 10px !important;
     height: auto !important;
+    min-height: 0 !important;
     box-shadow: none !important;
+    letter-spacing: 0 !important;
   }
   button[class*="rounded-full"][class*="border"][aria-pressed="true"],
-  button[class*="rounded-full"][data-state="active"] {
+  button[class*="rounded-full"][data-state="active"],
+  [class*="sm:w-56"] button[aria-pressed="true"],
+  [class*="sm:sticky"] button[aria-pressed="true"] {
     background: var(--cl-blue) !important;
     color: #fff !important;
     border-color: var(--cl-blue) !important;
+  }
+  /* Filter aside text (counts, labels) */
+  [class*="sm:w-56"], [class*="sm:w-56"] *,
+  [class*="sm:sticky"], [class*="sm:sticky"] * {
+    font-size: 0.8125rem !important;
+  }
+  [class*="sm:w-56"] h2, [class*="sm:w-56"] h3, [class*="sm:w-56"] h4,
+  [class*="sm:sticky"] h2, [class*="sm:sticky"] h3, [class*="sm:sticky"] h4 {
+    font-size: 0.6875rem !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    color: var(--cl-text-3) !important;
+  }
+
+  /* ══════════════════════════════════════════
+     LOGO CORNER (top-left) — Gmail logo well
+     ══════════════════════════════════════════ */
+  aside > div:first-child,
+  aside > a:first-child,
+  aside header, aside [class*="h-14"]:first-child, aside [class*="h-16"]:first-child {
+    background: #f6f8fc !important;
+    border-bottom: none !important;
+    box-shadow: none !important;
+    height: 64px !important;
+    min-height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0 16px !important;
+    gap: 12px !important;
+  }
+  /* Logo SVG/icon */
+  aside > div:first-child svg, aside > a:first-child svg {
+    width: 28px !important;
+    height: 28px !important;
+    color: var(--cl-red) !important;
+  }
+  /* Header bar above main, aligned with logo well */
+  header > div:first-child, [class*="h-14"][class*="border-b"] > div:first-child {
+    background: transparent !important;
+  }
+
+  /* ══════════════════════════════════════════
+     FULL-VIEWPORT FILL — kill scrolled dark reveal
+     ══════════════════════════════════════════ */
+  /* Body must paint behind the entire scrollable area, including overscroll */
+  html { background: #f6f8fc !important; }
+  body { background: #f6f8fc !important; min-height: 100vh !important; }
+  /* The app shell flex container — must stretch full height */
+  body > #root, #root > * {
+    min-height: 100vh !important;
+    background: #f6f8fc !important;
+  }
+  /* All direct children of main also stretch — prevents dark gap when content is short */
+  main, main > * {
+    background: #f6f8fc !important;
+  }
+  /* Any fixed/sticky bar that paints over the corner */
+  [class*="fixed"][class*="top-0"], [class*="sticky"][class*="top-0"] {
+    background: #f6f8fc !important;
   }
 
   /* Flat white containers — remove all card chrome */

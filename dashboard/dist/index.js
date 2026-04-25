@@ -244,6 +244,23 @@
     styleEl.textContent = rules.join("\n");
   }
 
+  // ─── Brand rename: Hermes → Thoth ─────────────────────────────────────────
+  // Replace text content only — never touch attributes, ids, classes.
+  function renameBrand(root) {
+    const walker = document.createTreeWalker(root || document.body, NodeFilter.SHOW_TEXT, null);
+    const hits = [];
+    let n;
+    while ((n = walker.nextNode())) {
+      const v = n.nodeValue;
+      if (v && /Hermes/.test(v)) hits.push(n);
+    }
+    hits.forEach(n => { n.nodeValue = n.nodeValue.replace(/Hermes/g, "Thoth"); });
+    // Also patch document.title once per change
+    if (/Hermes/.test(document.title)) {
+      document.title = document.title.replace(/Hermes/g, "Thoth");
+    }
+  }
+
   // ─── Main scan ────────────────────────────────────────────────────────────
   function scan() {
     checkThemeSwitch();
@@ -253,6 +270,7 @@
     colorCronJobs();
     colorModelBadges();
     refreshStyleSheet();
+    renameBrand();
   }
 
   function startObserver() {
