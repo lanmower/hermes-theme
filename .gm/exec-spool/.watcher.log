@@ -1,0 +1,151 @@
+
+--- supervisor spawn 2026-06-23T12:59:09.339Z parent=21400 ---
+
+--- watcher spawn 2026-06-23T12:59:09.567Z supervisor=5824 reason=initial ---
+[plugkit-wasm] plugkit v0.1.684 (wasm)
+[plugkit-wasm] watching C:\dev\hermes-theme\.gm\exec-spool\in
+[plugkit-wasm] spool watcher running
+(node:19100) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[dispatch] -> verb=instruction task=1 body=164b
+[plugkit-wasm] evt: {"event":"embed.wasm-loading","reason":"host_vec_embed probe failed; loading wasm-side bert model","ts":1782219567302}
+[plugkit-wasm] evt: {"embed_dim":384,"event":"embed.model-loaded","model":"BAAI/bge-small-en-v1.5","num_hidden_layers":12,"safetensors_bytes":133466304,"tokenizer_bytes":711396,"ts":1782219567647}
+[plugkit-wasm:warn] embed::init_ctx OK (host_delegated=false)
+[plugkit-wasm] evt: {"event":"embed_init_ok","host_delegated":false,"safetensors_bytes":133466304,"tokenizer_bytes":711396,"ts":1782219567652}
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"auto_recall","n_hits":0,"namespace":"default","query":"want transfer any design ideas seems","sub":"rs_learn","ts":1782219567917}
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"auto_recall","n_hits":0,"namespace":"default","query":"design ahead anentrypoint","sub":"rs_learn","ts":1782219568027}
+[plugkit-wasm:warn] instruction::handle start body_len=164
+[plugkit-wasm:warn] instruction::handle pre-recall query_len=149 prd_pending=0
+[plugkit-wasm:warn] recall::recall_hits start query_len=36 embed_len=149 limit=5
+[plugkit-wasm] evt: {"event":"embed.query_cache_hit","query_len":149,"ts":1782219568044}
+[plugkit-wasm:warn] recall::recall_hits embed_done embedded=true
+[plugkit-wasm:warn] recall::recall_hits vec_search returned
+[plugkit-wasm:warn] recall::recall_hits kv_query returned
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"kv_query","n_hits":0,"namespace":"default","query":"want transfer any design ideas seems","sub":"rs_learn","ts":1782219568047}
+[plugkit-wasm:warn] instruction::handle post-recall
+[plugkit-wasm:warn] instruction::handle done out_len=5946
+[dispatch] <- verb=instruction task=1 ms=958 out=6194b
+[dispatch] -> verb=recall task=1 body=54b
+[dispatch] <- verb=recall task=1 ms=88 out=187b
+[dispatch] -> verb=codesearch task=1 body=59b
+[plugkit-wasm] evt: {"event":"codeinsight_rebuild","reason":"digest-absent","stored_then_current":"5ec1c7dafb3225f99c425783839a3175acd14462:3585663080","ts":1782219579265}
+[plugkit-wasm:warn] code_index: indexing root=. files=7 libsql_ok=true manifests=0
+[plugkit-wasm:warn] code_index: done files_indexed=2 chunks=0 embedded=0 reused=0 reused_files=0 removed_files=0 skipped_no_embed=0 digest=5ec1c7dafb3225f99c425783839a3175acd14462:3585663080
+[dispatch] <- verb=codesearch task=1 ms=844 out=76b
+[dispatch] -> verb=prd-add task=1 body=421b
+[dispatch] <- verb=prd-add task=1 ms=10 out=71b
+[dispatch] -> verb=prd-add task=2 body=371b
+[dispatch] <- verb=prd-add task=2 ms=9 out=65b
+[dispatch] -> verb=prd-add task=3 body=300b
+[dispatch] <- verb=prd-add task=3 ms=7 out=67b
+[dispatch] -> verb=prd-add task=4 body=405b
+[dispatch] <- verb=prd-add task=4 ms=7 out=75b
+[dispatch] -> verb=prd-add task=5 body=304b
+[dispatch] <- verb=prd-add task=5 ms=8 out=62b
+[dispatch] -> verb=prd-add task=6 body=326b
+[dispatch] <- verb=prd-add task=6 ms=6 out=65b
+[dispatch] -> verb=prd-add task=7 body=541b
+[dispatch] <- verb=prd-add task=7 ms=7 out=68b
+[dispatch] -> verb=prd-add task=8 body=336b
+[dispatch] <- verb=prd-add task=8 ms=7 out=60b
+[dispatch] -> verb=prd-add task=9 body=254b
+[dispatch] <- verb=prd-add task=9 ms=7 out=65b
+[dispatch] -> verb=transition task=1 body=16b
+[plugkit-wasm:warn] recall::recall_hits start query_len=7 embed_len=7 limit=3
+[plugkit-wasm:warn] recall::recall_hits embed_done embedded=true
+[plugkit-wasm:warn] recall::recall_hits vec_search returned
+[plugkit-wasm:warn] recall::recall_hits kv_query returned
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"kv_query","n_hits":0,"namespace":"default","query":"EXECUTE","sub":"rs_learn","ts":1782219690371}
+[dispatch] <- verb=transition task=1 ms=65 out=97b
+[dispatch] -> verb=instruction task=1 body=211b
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"auto_recall","n_hits":0,"namespace":"default","query":"want transfer any design ideas seems","sub":"rs_learn","ts":1782219726647}
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"auto_recall","n_hits":0,"namespace":"default","query":"design anentrypoint improve","sub":"rs_learn","ts":1782219726713}
+[plugkit-wasm:warn] instruction::handle start body_len=211
+[plugkit-wasm:warn] instruction::handle pre-recall query_len=196 prd_pending=9
+[plugkit-wasm:warn] recall::recall_hits start query_len=36 embed_len=196 limit=5
+[plugkit-wasm] evt: {"event":"embed.query_cache_hit","query_len":196,"ts":1782219726727}
+[plugkit-wasm:warn] recall::recall_hits embed_done embedded=true
+[plugkit-wasm:warn] recall::recall_hits vec_search returned
+[plugkit-wasm:warn] recall::recall_hits kv_query returned
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"kv_query","n_hits":0,"namespace":"default","query":"want transfer any design ideas seems","sub":"rs_learn","ts":1782219726729}
+[plugkit-wasm:warn] instruction::handle post-recall
+[plugkit-wasm:warn] instruction::handle done out_len=13674
+[dispatch] <- verb=instruction task=1 ms=459 out=13922b
+[dispatch] -> verb=codesearch task=1 body=83b
+[plugkit-wasm:warn] code_index: indexing root=. files=7 libsql_ok=true manifests=2
+[plugkit-wasm:warn] code_index: done files_indexed=2 chunks=0 embedded=0 reused=0 reused_files=2 removed_files=0 skipped_no_embed=0 digest=5ec1c7dafb3225f99c425783839a3175acd14462:3585663080
+[plugkit-wasm] evt: {"event":"embed.query_cache_hit","query_len":71,"ts":1782219738740}
+[dispatch] <- verb=codesearch task=1 ms=764 out=76b
+[dispatch] -> verb=codesearch task=2 body=100b
+[plugkit-wasm:warn] code_index: indexing root=. files=7 libsql_ok=true manifests=2
+[plugkit-wasm:warn] code_index: done files_indexed=2 chunks=0 embedded=0 reused=0 reused_files=2 removed_files=0 skipped_no_embed=0 digest=5ec1c7dafb3225f99c425783839a3175acd14462:3585663080
+[plugkit-wasm] evt: {"event":"embed.query_cache_hit","query_len":88,"ts":1782219739515}
+[dispatch] <- verb=codesearch task=2 ms=717 out=76b
+[dispatch] -> verb=prd-resolve task=1 body=231b
+[dispatch] <- verb=prd-resolve task=1 ms=7 out=78b
+[dispatch] -> verb=prd-resolve task=2 body=219b
+[dispatch] <- verb=prd-resolve task=2 ms=7 out=72b
+[dispatch] -> verb=prd-resolve task=3 body=167b
+[dispatch] <- verb=prd-resolve task=3 ms=9 out=74b
+[dispatch] -> verb=prd-resolve task=4 body=211b
+[dispatch] <- verb=prd-resolve task=4 ms=9 out=69b
+[dispatch] -> verb=prd-resolve task=5 body=209b
+[dispatch] <- verb=prd-resolve task=5 ms=8 out=67b
+[dispatch] -> verb=prd-resolve task=6 body=241b
+[dispatch] <- verb=prd-resolve task=6 ms=8 out=72b
+[dispatch] -> verb=prd-resolve task=7 body=239b
+[dispatch] <- verb=prd-resolve task=7 ms=6 out=72b
+[dispatch] -> verb=prd-resolve task=8 body=236b
+[dispatch] <- verb=prd-resolve task=8 ms=7 out=82b
+[dispatch] -> verb=prd-resolve task=9 body=230b
+[dispatch] <- verb=prd-resolve task=9 ms=8 out=75b
+[dispatch] -> verb=transition task=1 body=13b
+[plugkit-wasm:warn] recall::recall_hits start query_len=4 embed_len=4 limit=3
+[plugkit-wasm:warn] recall::recall_hits embed_done embedded=true
+[plugkit-wasm:warn] recall::recall_hits vec_search returned
+[plugkit-wasm:warn] recall::recall_hits kv_query returned
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"kv_query","n_hits":0,"namespace":"default","query":"EMIT","sub":"rs_learn","ts":1782219913358}
+[dispatch] <- verb=transition task=1 ms=71 out=96b
+[dispatch] -> verb=instruction task=2 body=2b
+[plugkit-wasm] evt: {"event":"embed.query_cache_hit","query_len":196,"ts":1782219922950}
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"auto_recall","n_hits":0,"namespace":"default","query":"want transfer any design ideas seems","sub":"rs_learn","ts":1782219922952}
+[plugkit-wasm] evt: {"event":"embed.query_cache_hit","query_len":27,"ts":1782219922953}
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"auto_recall","n_hits":0,"namespace":"default","query":"design anentrypoint improve","sub":"rs_learn","ts":1782219922955}
+[plugkit-wasm:warn] instruction::handle start body_len=2
+[plugkit-wasm:warn] instruction::handle pre-recall query_len=196 prd_pending=0
+[plugkit-wasm:warn] recall::recall_hits start query_len=36 embed_len=196 limit=5
+[plugkit-wasm] evt: {"event":"embed.query_cache_hit","query_len":196,"ts":1782219922967}
+[plugkit-wasm:warn] recall::recall_hits embed_done embedded=true
+[plugkit-wasm:warn] recall::recall_hits vec_search returned
+[plugkit-wasm:warn] recall::recall_hits kv_query returned
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"kv_query","n_hits":0,"namespace":"default","query":"want transfer any design ideas seems","sub":"rs_learn","ts":1782219922968}
+[plugkit-wasm:warn] instruction::handle post-recall
+[plugkit-wasm:warn] instruction::handle done out_len=2922
+[dispatch] <- verb=instruction task=2 ms=240 out=3172b
+[dispatch] -> verb=transition task=2 body=15b
+[plugkit-wasm:warn] recall::recall_hits start query_len=6 embed_len=6 limit=3
+[plugkit-wasm:warn] recall::recall_hits embed_done embedded=true
+[plugkit-wasm:warn] recall::recall_hits vec_search returned
+[plugkit-wasm:warn] recall::recall_hits kv_query returned
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"kv_query","n_hits":0,"namespace":"default","query":"VERIFY","sub":"rs_learn","ts":1782219938648}
+[dispatch] <- verb=transition task=2 ms=177 out=100b
+[dispatch] -> verb=instruction task=3 body=2b
+[plugkit-wasm:warn] instruction::handle start body_len=2
+[plugkit-wasm:warn] instruction::handle pre-recall query_len=196 prd_pending=0
+[plugkit-wasm:warn] recall::recall_hits start query_len=36 embed_len=196 limit=5
+[plugkit-wasm] evt: {"event":"embed.query_cache_hit","query_len":196,"ts":1782219946292}
+[plugkit-wasm:warn] recall::recall_hits embed_done embedded=true
+[plugkit-wasm:warn] recall::recall_hits vec_search returned
+[plugkit-wasm:warn] recall::recall_hits kv_query returned
+[plugkit-wasm] evt: {"event":"recall","hit":false,"mode":"kv_query","n_hits":0,"namespace":"default","query":"want transfer any design ideas seems","sub":"rs_learn","ts":1782219946295}
+[plugkit-wasm:warn] instruction::handle post-recall
+[plugkit-wasm:warn] instruction::handle done out_len=8629
+[dispatch] <- verb=instruction task=3 ms=2025 out=8669b
+[dispatch] -> verb=residual-scan task=1 body=2b
+[dispatch] <- verb=residual-scan task=1 ms=241 out=270b
+[dispatch] -> verb=git_status task=1 body=2b
+[dispatch] <- verb=git_status task=1 ms=226 out=215b
+[dispatch] -> verb=git_finalize task=1 body=436b
+[plugkit-wasm] evt: {"event":"git.commit","repo":null,"sha":"9f40209","summary":"feat(theme): transfer design improvements from anentrypoint-design","ts":1782219992121}
+[dispatch] <- verb=git_finalize task=1 ms=2609 out=160b
+[dispatch] -> verb=git_finalize task=2 body=436b

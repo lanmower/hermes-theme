@@ -1,0 +1,1 @@
+{"error":"worktree still dirty after commit (untriaged residual) -- refusing push. Porcelain:\n M .gm/exec-spool/.watcher.log","ok":false,"verb":"git_finalize"}
