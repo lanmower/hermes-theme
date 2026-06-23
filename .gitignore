@@ -12,3 +12,5 @@
 .gm/instructions/
 .gm/residual-check-fired
 # <<< plugkit managed
+config.bat
+node_modules

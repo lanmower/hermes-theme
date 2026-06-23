@@ -411,9 +411,30 @@ customCSS: |
     text-decoration: none !important;
     padding: 0 2px !important;
   }
-  * { scrollbar-width: thin; scrollbar-color: #5f6368 transparent; }
-  *::-webkit-scrollbar { width: 6px; height: 6px; }
-  *::-webkit-scrollbar-thumb { background: #5f6368; border-radius: 3px; }
+  * { scrollbar-width: thin; scrollbar-color: color-mix(in srgb, var(--cl-text-2) 30%, transparent) transparent; }
+  *::-webkit-scrollbar { width: 8px; height: 8px; }
+  *::-webkit-scrollbar-track { background: transparent; }
+  *::-webkit-scrollbar-thumb { background: color-mix(in srgb, var(--cl-text-2) 28%, transparent); border-radius: 999px; border: 2px solid transparent; background-clip: padding-box; }
+  *::-webkit-scrollbar-thumb:hover { background: color-mix(in srgb, var(--cl-text-2) 48%, transparent); background-clip: padding-box; }
+
+  /* Inline code + kbd chips */
+  kbd {
+    font-family: "Roboto Mono", ui-monospace, monospace !important;
+    font-size: 0.85em !important;
+    background: #3c4043 !important;
+    color: #e8eaed !important;
+    padding: 2px 6px !important;
+    border-radius: 4px !important;
+  }
+  :not(pre) > code {
+    font-family: "Roboto Mono", ui-monospace, monospace !important;
+    font-size: 0.88em !important;
+    background: #3c4043 !important;
+    color: #e8eaed !important;
+    padding: 0.15em 0.45em !important;
+    border-radius: 4px !important;
+  }
+
   /* Kill global shadows except elevated surfaces */
   *:not([data-slot="popover-content"]):not([data-slot="dropdown-content"]):not([role="dialog"]):not([role="tooltip"]):not([data-slot="tooltip-content"]) {
     box-shadow: none !important;
@@ -486,6 +507,14 @@ customCSS: |
       transition-duration: 0.001ms !important;
       scroll-behavior: auto !important;
     }
+  }
+
+  @media print {
+    *, *::before, *::after { box-shadow: none !important; text-shadow: none !important; }
+    body { background: #fff !important; color: #202124 !important; }
+    aside, nav, [role="navigation"], [data-slot="sidebar"], .sidebar { display: none !important; }
+    a, a:visited { text-decoration: underline !important; color: #1a73e8 !important; }
+    a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #5f6368; }
   }
 
   /* ══════════════════════════════════════════
