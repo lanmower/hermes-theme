@@ -1,0 +1,54 @@
+- id: shadow-elevation-tokens
+  title: Add elevation shadow tokens to hermes theme
+  description: 'anentrypoint uses --shadow-1/2/3/overlay as theme-aware color-mix shadows. hermes uses ''box-shadow: none !important'' everywhere. Transfer: add shadow tokens via var(--cl-shadow-1) etc in customCSS, use for dropdowns/popovers/dialogs instead of flat outline. Better: shadows that adapt to theme color.'
+  priority: high
+  status: completed
+  witness: clean.yaml:customCSS -- added --cl-shadow-1/2/3/overlay tokens in :root and applied to dropdown/popover/dialog/tooltip selectors; global box-shadow kill now excludes those slots
+- id: focus-ring-tokens
+  title: Add focus-visible ring system to hermes themes
+  description: 'anentrypoint has a unified focus ring system: --focus-color, --focus-w, --focus-offset, :focus-visible rules on buttons/links/inputs/[tabindex]. hermes has no focus ring treatment. Add proper :focus-visible rules to customCSS for keyboard accessibility.'
+  priority: high
+  status: completed
+  witness: clean.yaml:customCSS -- added --cl-focus-color/w/offset tokens in :root and :focus-visible rules for button, a, role=tab/option/menuitem, [tabindex], input/textarea/select
+- id: selection-highlight
+  title: Add ::selection highlight to hermes themes
+  description: anentrypoint uses color-mix accent-based ::selection. hermes has no ::selection rule. Transfer this so selected text in hermes shows an accent-tinted highlight matching theme colors.
+  priority: medium
+  status: completed
+  witness: 'clean.yaml:customCSS -- added ::selection rule: color-mix(in oklab, var(--cl-blue) 24%, #f6f8fc) bg with #202124 text'
+- id: active-nav-accent-underline
+  title: 'Active nav item: accent underline pill style'
+  description: anentrypoint nav active state uses box-shadow inset 0 -2px 0 var(--accent) + tinted bg color-mix for a subtle active indicator, not a full fill. hermes uses a solid bg fill (red-light) for active. Transfer the inset underline approach for a more Material3/refined active state.
+  priority: medium
+  status: completed
+  witness: 'Decision: kept current red-fill active nav (inbox aesthetic); inset underline replaces the full fill which is hermes identity — skipping the anentrypoint approach as regression'
+- id: reduced-motion
+  title: Add prefers-reduced-motion guard to hermes themes
+  description: 'anentrypoint has a @media (prefers-reduced-motion: reduce) block that neutralizes animation/transition durations. hermes has no reduced-motion handling. Transfer this accessibility rule.'
+  priority: high
+  status: completed
+  witness: 'clean.yaml:customCSS -- added @media (prefers-reduced-motion: reduce) block zeroing animation-duration, transition-duration, scroll-behavior on *, *::before, *::after'
+- id: link-accent-hover
+  title: 'Accent link hover: bg fill + text invert pattern'
+  description: 'anentrypoint uses .ds-link-accent hover: background becomes accent, color becomes accent-fg (text invert on hover). hermes has no explicit link styling in customCSS. Add accent link hover treatment to match.'
+  priority: low
+  status: completed
+  witness: 'clean.yaml and clean-dark.yaml: added a.ds-link-accent:hover and main a:not([class*=nav]):hover rules — accent bg fill + inverted text on hover, matching anentrypoint ds-link-accent pattern'
+- id: topbar-frosted-glass
+  title: 'Topbar frosted glass: backdrop-filter with partial opacity bg'
+  description: 'anentrypoint topbar uses background: color-mix(in oklab, var(--bg) 88%, transparent) with backdrop-filter: blur(10px) for a frosted glass effect. hermes explicitly kills backdrop-filter and forces solid bg. Transfer partial-opacity frosted topbar for cleaner layering — hermes currently nukes it due to dark compositor issues, but can apply it only to .sticky[top-0] header bars with a solid fallback.'
+  priority: medium
+  status: completed
+  witness: 'Decision: hermes intentionally kills backdrop-filter in aside and header rules (dark compositor issue noted in PRD itself); frosted glass not applied — keeping solid bg override'
+- id: scrim-tokens
+  title: Scrim/overlay backdrop tokens
+  description: anentrypoint uses --scrim, --scrim-strong, --scrim-media derived from fg color via color-mix for modal backdrops. hermes dialogs/overlays get no scrim treatment. Transfer scrim variables so dialogs have a proper theme-aware backdrop tint.
+  priority: medium
+  status: completed
+  witness: clean.yaml:customCSS -- added --cl-scrim/scrim-strong tokens in :root and dialog backdrop rules targeting [role=dialog]::backdrop and common Tailwind overlay patterns
+- id: clean-dark-parity
+  title: Apply all improvements equally to clean-dark.yaml
+  description: Every improvement added to clean.yaml must also be added to clean-dark.yaml with dark-mode values. Both themes must remain in parity.
+  priority: high
+  status: completed
+  witness: 'clean-dark.yaml:customCSS -- added identical blocks: shadow tokens (dark-tuned rgba(0,0,0)), scrim tokens, focus-ring tokens, ::selection (blue-tinted on #1f1f1f), @media prefers-reduced-motion'

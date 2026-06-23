@@ -1,0 +1,1 @@
+we want to transfer any design ideas that seems better over what we have on c:\dev\anentrypoint-design to improve it, go ahead and make all decisions, our goal being to improve anentrypoint-design

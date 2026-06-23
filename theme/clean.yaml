@@ -120,6 +120,18 @@ customCSS: |
     --cl-severity-success-bg: #e6f4ea !important;
     --cl-severity-success-fg: #137333 !important;
     --cl-shadow: none;
+    /* Elevation shadows — theme-aware via color-mix(fg) */
+    --cl-shadow-1: 0 1px 2px rgba(60,64,67,0.08) !important;
+    --cl-shadow-2: 0 4px 12px rgba(60,64,67,0.10), 0 2px 4px rgba(60,64,67,0.06) !important;
+    --cl-shadow-3: 0 12px 32px rgba(60,64,67,0.14), 0 4px 8px rgba(60,64,67,0.08) !important;
+    --cl-shadow-overlay: 0 12px 40px rgba(60,64,67,0.28), 0 4px 12px rgba(60,64,67,0.16) !important;
+    /* Scrim tokens for modal/overlay backdrops */
+    --cl-scrim: rgba(32,33,36,0.40) !important;
+    --cl-scrim-strong: rgba(32,33,36,0.72) !important;
+    /* Focus ring tokens */
+    --cl-focus-color: var(--cl-blue) !important;
+    --cl-focus-w: 2px !important;
+    --cl-focus-offset: 2px !important;
   }
 
   /* ── Kill noise / filler overlays ── */
@@ -681,7 +693,15 @@ customCSS: |
     font-size: 0.75rem !important;
     padding: 4px 8px !important;
     border: none !important;
-    box-shadow: none !important;
+  }
+
+  /* Accent links — hover fills bg with accent, inverts text */
+  a.ds-link-accent:hover, main a:not([class*="nav"]):hover {
+    background: var(--cl-blue) !important;
+    color: #fff !important;
+    border-radius: 2px !important;
+    text-decoration: none !important;
+    padding: 0 2px !important;
   }
 
   /* Switch toggle */
@@ -693,9 +713,78 @@ customCSS: |
     background: var(--cl-blue) !important;
   }
 
-  /* Kill all remaining box shadows globally */
-  *:not([data-slot="popover-content"]):not([data-slot="dropdown-content"]):not([role="dialog"]) {
+  /* Kill all remaining box shadows globally — except elevated surfaces */
+  *:not([data-slot="popover-content"]):not([data-slot="dropdown-content"]):not([role="dialog"]):not([role="tooltip"]):not([data-slot="tooltip-content"]) {
     box-shadow: none !important;
+  }
+
+  /* ══════════════════════════════════════════
+     ELEVATION SHADOWS — dropdowns/popovers/dialogs
+     ══════════════════════════════════════════ */
+  [data-slot="popover-content"], [data-slot="dropdown-content"],
+  [data-slot="select-content"], [data-slot="command"],
+  [role="listbox"], [role="menu"] {
+    box-shadow: var(--cl-shadow-2) !important;
+    outline: none !important;
+  }
+  [role="dialog"] > div {
+    box-shadow: var(--cl-shadow-overlay) !important;
+    outline: none !important;
+  }
+  [data-slot="tooltip-content"], [role="tooltip"] {
+    box-shadow: var(--cl-shadow-1) !important;
+  }
+
+  /* ══════════════════════════════════════════
+     MODAL SCRIM — backdrop for dialogs
+     ══════════════════════════════════════════ */
+  [role="dialog"]::backdrop,
+  .dialog-backdrop, [data-slot="dialog-backdrop"],
+  [class*="fixed inset-0"][class*="bg-black"],
+  [class*="fixed inset-0"][class*="bg-background/80"] {
+    background: var(--cl-scrim) !important;
+    backdrop-filter: blur(2px) !important;
+    -webkit-backdrop-filter: blur(2px) !important;
+  }
+
+  /* ══════════════════════════════════════════
+     FOCUS RING — keyboard accessibility
+     ══════════════════════════════════════════ */
+  :focus-visible {
+    outline: var(--cl-focus-w) solid var(--cl-focus-color) !important;
+    outline-offset: var(--cl-focus-offset) !important;
+  }
+  button:focus-visible, [role="button"]:focus-visible,
+  a:focus-visible, [role="link"]:focus-visible,
+  [role="tab"]:focus-visible, [role="option"]:focus-visible,
+  [role="menuitem"]:focus-visible, [tabindex]:focus-visible {
+    outline: var(--cl-focus-w) solid var(--cl-focus-color) !important;
+    outline-offset: var(--cl-focus-offset) !important;
+    box-shadow: none !important;
+  }
+  input:focus-visible, textarea:focus-visible, select:focus-visible {
+    outline: var(--cl-focus-w) solid var(--cl-focus-color) !important;
+    outline-offset: 0 !important;
+  }
+
+  /* ══════════════════════════════════════════
+     SELECTION HIGHLIGHT — accent-tinted
+     ══════════════════════════════════════════ */
+  ::selection {
+    background: color-mix(in oklab, var(--cl-blue) 24%, #f6f8fc) !important;
+    color: #202124 !important;
+  }
+
+  /* ══════════════════════════════════════════
+     REDUCED MOTION — accessibility guard
+     ══════════════════════════════════════════ */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 
   /* ══════════════════════════════════════════
