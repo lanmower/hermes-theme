@@ -2,4 +2,12 @@
 # >>> plugkit managed
 .gm/exec-spool/
 .gm/witness/
+.gm/last-dispatch-ts
+.gm/last-instruction-ts
+.gm/last-prompt.txt
+.gm/long-gap-retry-state
+.gm/next-step.md
+.gm/turn-state.json
+.gm/pw-sock-*/
+.gm/instructions/
 # <<< plugkit managed
