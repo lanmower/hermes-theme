@@ -1,6 +1,5 @@
 .gm/pw-sock-*/
 # >>> plugkit managed
-.gm/exec-spool/.watcher.log
-.gm/exec-spool/*.log
+.gm/exec-spool/
 .gm/witness/
 # <<< plugkit managed
